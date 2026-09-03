@@ -9,8 +9,8 @@
 <link href="css/main.css" rel="stylesheet">
 <link href="css/site-system.css" rel="stylesheet"><style data-siteedit-site-frame="1920">
 /* SiteEdit desktop composition: content is capped at 1920px; top-level section backgrounds always bleed to the real browser edges. */
-html{overflow-x:clip}body{max-width:1920px!important;margin-left:auto!important;margin-right:auto!important;overflow-x:visible!important}[data-siteedit-fullbleed="true"]{isolation:isolate}[data-siteedit-fullbleed="true"]::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:inherit;border-radius:0}[data-siteedit-fullbleed-context="true"]{position:relative}[data-siteedit-hidden="true"]{display:none!important}
-</style><style data-siteedit-responsive="true">@media(max-width:800px){[data-siteedit-free="true"]{position:relative!important;left:auto!important;right:auto!important;top:auto!important;max-width:100%!important;margin:24px auto!important}}</style></head>
+html{overflow-x:clip}body{max-width:1920px!important;margin-left:auto!important;margin-right:auto!important;overflow-x:visible!important}[data-siteedit-fullbleed="true"]{isolation:isolate}[data-siteedit-fullbleed="true"]::before{content:"";position:absolute;z-index:-1;pointer-events:none;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:inherit;border-radius:0}[data-siteedit-fullbleed-context="true"]{position:relative}[data-siteedit-hidden="true"]{display:none!important}[data-siteedit-drop-active="true"]{outline:3px solid #7255ff!important;outline-offset:4px!important}
+</style><style data-siteedit-responsive="true">@media(max-width:800px){[data-siteedit-free="true"]{position:relative!important;left:auto!important;right:auto!important;top:auto!important;max-width:100%!important;margin:24px auto!important}}</style><style data-siteedit-breakpoint-style="true"></style></head>
 <body id="top" class="">
 <header class="site-header" data-siteedit-fullbleed="true">
 <div class="container header-inner">
@@ -44,7 +44,7 @@ html{overflow-x:clip}body{max-width:1920px!important;margin-left:auto!important;
 </div>
 </div>
 <div class="hero-art">
-<img alt="Studio Bounce schildert een jungle muurschildering met giraffe en aap" src="assets/siteedit/hero-main-2.webp" style="height: 610px; object-fit: cover; object-position: 50% 50%;">
+<img alt="Studio Bounce schildert een jungle muurschildering met giraffe en aap" src="assets/siteedit/Hero_Muurschildering_breda_Jungle.png" style="height: 610px; object-fit: cover; object-position: 50% 50%;">
 </div>
 </section>
 <!-- INFO STRIP: landing-page clarity -->
@@ -100,10 +100,10 @@ html{overflow-x:clip}body{max-width:1920px!important;margin-left:auto!important;
 <p>Van kinderkamer tot bedrijfsmuur: iedere schildering wordt gemaakt voor de ruimte waarin hij terechtkomt.</p>
 </div>
 <div aria-label="Portfolio filters" class="filters">
-<button class="filter active" data-filter="all" type="button">Alle</button>
+<button class="filter" data-filter="all" type="button">Alle</button>
 <button class="filter" data-filter="kinderkamers" type="button">Kinderkamers</button>
 <button class="filter" data-filter="woonkamers" type="button">Woonkamers</button>
-<button class="filter" data-filter="bedrijven" type="button">Bedrijven</button>
+<button class="filter active" data-filter="bedrijven" type="button">Bedrijven</button>
 <button class="filter" data-filter="horeca" type="button">Horeca</button>
 <button class="filter" data-filter="buitenmuren" type="button">Buitenmuren</button>
 <button class="filter" data-filter="jungle" type="button">Jungle</button>
@@ -111,39 +111,75 @@ html{overflow-x:clip}body{max-width:1920px!important;margin-left:auto!important;
 <button class="filter" data-filter="portretten" type="button">Portretten</button>
 </div>
 <div aria-live="polite" class="gallery">
-<article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers dieren" role="button" tabindex="0">
-<img alt="Teddybeer muurschildering in een kinderkamer" src="assets/siteedit/proces-teddy.webp">
-<span>Kinderkamers</span>
-</article>
-<article aria-label="Vergroot woonkamer muurschildering" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0">
-<img alt="Botanische muurschildering in een moderne woonkamer" src="assets/images/woonkamer-botanisch.webp">
-<span>Woonkamers</span>
-</article>
+
+
 <article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="bedrijven" role="button" tabindex="0">
 <img alt="Abstracte muurschildering achter een bedrijfsreceptie" src="assets/images/bedrijf-receptie.webp">
 <span>Bedrijven</span>
 </article>
-<article aria-label="Vergroot buitenmuur" class="gallery-card" data-cat="buitenmuren" role="button" tabindex="0">
+<article aria-label="Vergroot buitenmuur" class="gallery-card" data-cat="buitenmuren" role="button" tabindex="0" hidden="">
 <img alt="Kleurrijke bloemenmuurschildering op een buitengevel" src="assets/images/buitenmuur-bloemen.webp">
 <span>Buitenmuren</span>
 </article>
-<article aria-label="Vergroot horeca muurschildering" class="gallery-card" data-cat="horeca jungle" role="button" tabindex="0">
+<article aria-label="Vergroot horeca muurschildering" class="gallery-card" data-cat="horeca jungle" role="button" tabindex="0" hidden="">
 <img alt="Botanische muurschildering in een horecazaak" src="assets/images/horeca-botanisch.webp">
 <span>Horeca</span>
 </article>
-<article aria-label="Vergroot organische muurschildering" class="gallery-card" data-cat="woonkamers jungle" role="button" tabindex="0">
-<img alt="Organische abstracte muurschildering in een woonkamer" src="assets/images/woonkamer-abstract.webp">
-<span>Jungle</span>
-</article>
-<article aria-label="Vergroot dieren muurschildering" class="gallery-card" data-cat="kinderkamers dieren jungle" role="button" tabindex="0">
-<img alt="Jungle muurschildering met dieren in een kinderkamer" src="assets/images/kinderkamer-jungle.webp">
-<span>Dieren</span>
-</article>
-<article aria-label="Vergroot portret mural" class="gallery-card" data-cat="portretten buitenmuren" role="button" tabindex="0">
+
+
+<article aria-label="Vergroot portret mural" class="gallery-card" data-cat="portretten buitenmuren" role="button" tabindex="0" hidden="">
 <img alt="Grote portretmuurschildering op een buitenmuur" src="assets/images/buitenmuur-portret.webp">
 <span>Portretten</span>
 </article>
-</div>
+<article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website1.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website3.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website6.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website11.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website12.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website13.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website14.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website16.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website20.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website21.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot kinderkamer muurschildering" class="gallery-card" data-cat="kinderkamers" role="button" tabindex="0">
+<img alt="" src="assets/siteedit/Kinderkamer_Muurschilderingen-website25.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%; aspect-ratio: 383 / 259;">
+<span>Kinderkamers</span>
+</article><article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0" hidden="">
+<img alt="" src="assets/siteedit/Woonkamer_Muurschilderingen-website.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%;">
+<span>Bedrijven</span>
+</article><article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0" hidden="">
+<img alt="" src="assets/siteedit/Woonkamer_Muurschilderingen-website9.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%;">
+<span>Bedrijven</span>
+</article><article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0" hidden="">
+<img alt="" src="assets/siteedit/Woonkamer_Muurschilderingen-website10.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%;">
+<span>Bedrijven</span>
+</article><article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0" hidden="">
+<img alt="" src="assets/siteedit/Woonkamer_Muurschilderingen-website15.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%;">
+<span>Bedrijven</span>
+</article><article aria-label="Vergroot bedrijfsmural" class="gallery-card" data-cat="woonkamers" role="button" tabindex="0" hidden="">
+<img alt="" src="assets/siteedit/Woonkamer_Muurschilderingen-website24.jpg" data-siteedit-resizable="" data-editor-name="Image" class="" data-siteedit-gallery-item="true" style="width: 100%; height: auto; object-fit: cover; border-radius: 0px; max-width: 100%;">
+<span>Bedrijven</span>
+</article></div>
 <div class="center-actions">
 <a class="btn btn-primary" href="#contact">Bekijk al mijn werk</a>
 </div>
