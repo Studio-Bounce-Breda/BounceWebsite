@@ -27,23 +27,79 @@ document.addEventListener('DOMContentLoaded', () => {
     link.rel = 'noopener';
   });
 
-  /* Portfolio filter */
+  /* Portfolio filter + compact tablet/mobile gallery */
   const filters = Array.from(document.querySelectorAll('.filter'));
   const cards = Array.from(document.querySelectorAll('.gallery-card'));
+  const galleryLoadMore = document.querySelector('.gallery-load-more');
+  const compactGallery = window.matchMedia('(max-width: 860px)');
+  const GALLERY_BATCH = 6;
+  let activeFilter = filters.find(item => item.classList.contains('active'))?.dataset.filter || 'all';
+  let galleryVisibleCount = GALLERY_BATCH;
+
+  function cardMatchesFilter(card, filter) {
+    if (filter === 'all') return true;
+    return (card.dataset.cat || '').split(/\s+/).includes(filter);
+  }
+
+  function orderedPortfolioCards(filter) {
+    const matching = cards.filter(card => cardMatchesFilter(card, filter));
+    if (filter !== 'all') return matching;
+
+    // "Alle" starts with one representative image from each current category.
+    // Because this reads the filter buttons dynamically, new SiteEdit categories
+    // automatically participate without hard-coding category names here.
+    const categoryKeys = filters
+      .map(button => button.dataset.filter)
+      .filter(key => key && key !== 'all');
+    const representatives = [];
+    categoryKeys.forEach(key => {
+      const card = matching.find(item => cardMatchesFilter(item, key));
+      if (card && !representatives.includes(card)) representatives.push(card);
+    });
+    matching.forEach(card => {
+      if (!representatives.includes(card)) representatives.push(card);
+    });
+    return representatives;
+  }
+
+  function applyPortfolioView({ reset = false } = {}) {
+    if (reset) galleryVisibleCount = GALLERY_BATCH;
+    const ordered = orderedPortfolioCards(activeFilter);
+    const compact = compactGallery.matches;
+    const visibleSet = new Set(compact ? ordered.slice(0, galleryVisibleCount) : ordered);
+
+    cards.forEach(card => {
+      card.hidden = !cardMatchesFilter(card, activeFilter) || (compact && !visibleSet.has(card));
+    });
+
+    if (galleryLoadMore) {
+      const hasMore = compact && galleryVisibleCount < ordered.length;
+      galleryLoadMore.hidden = !hasMore;
+      galleryLoadMore.setAttribute('aria-hidden', String(!hasMore));
+    }
+
+    closeLightbox();
+  }
 
   filters.forEach(button => {
     button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
+      activeFilter = button.dataset.filter || 'all';
       filters.forEach(item => item.classList.toggle('active', item === button));
-
-      cards.forEach(card => {
-        const cats = (card.dataset.cat || '').split(/\s+/);
-        card.hidden = filter !== 'all' && !cats.includes(filter);
-      });
-
-      closeLightbox();
+      applyPortfolioView({ reset: true });
     });
   });
+
+  galleryLoadMore?.addEventListener('click', () => {
+    galleryVisibleCount += GALLERY_BATCH;
+    applyPortfolioView();
+  });
+
+  const refreshCompactGallery = () => applyPortfolioView({ reset: true });
+  if (typeof compactGallery.addEventListener === 'function') {
+    compactGallery.addEventListener('change', refreshCompactGallery);
+  } else if (typeof compactGallery.addListener === 'function') {
+    compactGallery.addListener(refreshCompactGallery);
+  }
 
   /* Lightbox */
   const lightbox = document.getElementById('lightbox');
@@ -84,6 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('lightbox-open');
   }
+
+  applyPortfolioView({ reset: true });
 
   cards.forEach(card => {
     card.addEventListener('click', () => openLightbox(card));

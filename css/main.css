@@ -810,3 +810,173 @@ section{scroll-margin-top:90px}
     );
   }
 }
+
+
+/* =========================================================
+   HOME MOBILE PASS — 15-09-2026
+   Scoped to .home-page so subpages can be tuned separately.
+   ========================================================= */
+.gallery-load-more[hidden]{display:none !important}
+
+@media(max-width:860px){
+  /* Keep the homepage rhythm tighter on tablet/mobile without touching subpages. */
+  .home-page .section-pad{
+    padding-top:58px !important;
+    padding-bottom:58px !important;
+  }
+
+  /* Portfolio: six representative items first, then progressive reveal. */
+  .home-page .gallery-card img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+  }
+  .home-page .gallery-more-actions{margin-top:22px}
+  .home-page .gallery-load-more{min-width:148px}
+}
+
+@media(max-width:600px){
+  /* HERO: image first, copy second. The image fades naturally into the paper background. */
+  .home-page .hero{
+    display:flex !important;
+    flex-direction:column !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    background:var(--paper) !important;
+  }
+  .home-page .hero::after{display:none !important}
+  .home-page .hero-art{
+    position:relative !important;
+    inset:auto !important;
+    order:1 !important;
+    width:100% !important;
+    height:clamp(320px,92vw,430px) !important;
+    flex:0 0 auto !important;
+    overflow:hidden !important;
+  }
+  .home-page .hero-art img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    object-position:58% 48% !important;
+  }
+  .home-page .hero-art::after{
+    content:"" !important;
+    display:block !important;
+    position:absolute !important;
+    z-index:3 !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:-1px !important;
+    height:42% !important;
+    pointer-events:none !important;
+    background:linear-gradient(
+      180deg,
+      rgba(255,253,250,0) 0%,
+      rgba(255,253,250,.16) 34%,
+      rgba(255,253,250,.76) 72%,
+      var(--paper) 100%
+    ) !important;
+  }
+  .home-page .hero-inner{
+    order:2 !important;
+    min-height:0 !important;
+    align-items:stretch !important;
+  }
+  .home-page .hero-copy{
+    width:100% !important;
+    max-width:none !important;
+    padding:18px 0 44px !important;
+  }
+  .home-page .hero-copy h1{
+    font-size:clamp(2.65rem,12vw,3.65rem) !important;
+    line-height:.95 !important;
+    margin-bottom:18px !important;
+  }
+  .home-page .hero-lead{max-width:100% !important}
+  .home-page .hero-actions{margin-top:24px !important}
+
+  /* Less empty vertical space between homepage sections. */
+  .home-page .section-pad{
+    padding-top:48px !important;
+    padding-bottom:48px !important;
+  }
+  .home-page .section-head{margin-bottom:24px !important}
+  .home-page .about-grid{gap:28px !important}
+  .home-page .about-visual{height:330px !important}
+
+  /* Portfolio filters stay compact instead of wrapping into several rows. */
+  .home-page .filters{
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    overflow-x:auto !important;
+    overscroll-behavior-inline:contain;
+    gap:6px !important;
+    margin:0 -13px 20px !important;
+    padding:0 13px 7px !important;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+  .home-page .filters::-webkit-scrollbar{display:none}
+  .home-page .filter{flex:0 0 auto !important}
+
+  /* Gallery images should feel substantial and completely fill their cards. */
+  .home-page .gallery{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+  .home-page .gallery-card{
+    width:100% !important;
+    aspect-ratio:1.48 !important;
+    border-radius:15px !important;
+  }
+  .home-page .gallery-card img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+  }
+
+  /* Process steps: larger icons and a clean icon/text alignment. */
+  .home-page .process-grid{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+    margin-top:26px !important;
+  }
+  .home-page .process-card{
+    display:grid !important;
+    grid-template-columns:58px minmax(0,1fr) !important;
+    grid-template-rows:auto auto !important;
+    column-gap:16px !important;
+    row-gap:5px !important;
+    align-items:start !important;
+    min-height:0 !important;
+    padding:19px 18px !important;
+  }
+  .home-page .process-icon{
+    grid-column:1 !important;
+    grid-row:1 / span 2 !important;
+    align-self:start !important;
+    width:54px !important;
+    height:54px !important;
+    margin:0 !important;
+  }
+  .home-page .process-icon svg{
+    width:54px !important;
+    height:54px !important;
+  }
+  .home-page .process-card h3{
+    grid-column:2 !important;
+    grid-row:1 !important;
+    margin:3px 0 2px !important;
+    align-self:end !important;
+  }
+  .home-page .process-card p{
+    grid-column:2 !important;
+    grid-row:2 !important;
+    margin:0 !important;
+  }
+  .home-page .process-note{margin-top:16px !important}
+}
