@@ -451,3 +451,46 @@
   .main-nav a{padding:10px !important}
   .nav-cta{margin-left:0 !important}
 }
+/* 15-09-2026 — category-linked Kinderkamers imagery + layout pass */
+/* Match the homepage portfolio: three landscape examples on desktop. */
+.example-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  gap:16px !important;
+}
+.example-card{
+  aspect-ratio:1.48 !important;
+  min-height:0 !important;
+}
+.example-card img{
+  width:100% !important;
+  height:100% !important;
+  min-height:0 !important;
+  object-fit:cover !important;
+}
+
+/* Desktop contact CTA is a true 50 / 50 split. */
+.contact-card{
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+}
+.contact-copy,
+.contact-single-image{
+  min-width:0;
+}
+.contact-single-image img{
+  display:block;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+}
+
+@media(max-width:900px){
+  .example-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+}
+@media(max-width:600px){
+  .example-grid{grid-template-columns:1fr !important}
+  .example-card{aspect-ratio:1.45 !important}
+}
+@media(max-width:980px){
+  .contact-card{grid-template-columns:1fr !important}
+}
