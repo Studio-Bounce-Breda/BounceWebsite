@@ -615,7 +615,6 @@ section{scroll-margin-top:90px}
 
 /* Review actions */
 .review-actions{display:flex;gap:10px;flex-wrap:wrap}
-.review-write-link[aria-disabled="true"]{opacity:.72}
 
 /* FAQ zonder foto */
 .faq-grid{

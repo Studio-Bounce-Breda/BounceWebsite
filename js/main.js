@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reviews — 3 desktop, 2 tablet, 1 mobile */
   const track = document.querySelector('.reviews-track');
-  const reviewCards = track ? Array.from(track.querySelectorAll('.review-card')) : [];
+  let reviewCards = track ? Array.from(track.querySelectorAll('.review-card')) : [];
   const prev = document.querySelector('.review-prev');
   const next = document.querySelector('.review-next');
   const dots = document.querySelector('.review-dots');
@@ -168,27 +168,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  function refreshReviewCards() {
+    reviewCards = track ? Array.from(track.querySelectorAll('.review-card')) : [];
+    reviewPage = 0;
+    updateReviews();
+  }
+
+  document.addEventListener('studio-bounce:reviews-updated', refreshReviewCards);
   window.addEventListener('resize', updateReviews);
   updateReviews();
 });
 
-
-/* Google review link
-   Vul hier later de directe Google 'Schrijf een review'-URL in. */
-document.addEventListener('DOMContentLoaded', () => {
-  const GOOGLE_REVIEW_URL = '';
-  document.querySelectorAll('.review-write-link').forEach(link => {
-    if (GOOGLE_REVIEW_URL) {
-      link.href = GOOGLE_REVIEW_URL;
-      link.target = '_blank';
-      link.rel = 'noopener';
-      link.removeAttribute('aria-disabled');
-    } else {
-      link.addEventListener('click', e => e.preventDefault());
-      link.title = 'Directe Google review-link nog invullen';
-    }
-  });
-});
 
 
 document.addEventListener('DOMContentLoaded', () => {
