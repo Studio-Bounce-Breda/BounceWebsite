@@ -2,24 +2,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const WHATSAPP_URL = 'https://wa.me/31600000000'; // TODO: vervang door echte nummer
 
-  /* Mobile nav */
-  const toggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.main-nav');
-
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
   /* WhatsApp */
   document.querySelectorAll('.whatsapp-link').forEach(link => {
     link.href = WHATSAPP_URL;
@@ -235,24 +217,4 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('studio-bounce:reviews-updated', refreshReviewCards);
   window.addEventListener('resize', updateReviews);
   updateReviews();
-});
-
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.main-nav');
-  if (toggle && nav && !toggle.dataset.bound) {
-    toggle.dataset.bound = 'true';
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
 });

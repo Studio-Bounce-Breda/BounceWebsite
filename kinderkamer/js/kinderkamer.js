@@ -8,41 +8,7 @@
       link.rel = 'noopener';
     });
 
-    const toggle = document.querySelector('.mobile-toggle');
-    const nav = document.querySelector('.nav');
-    if (toggle && nav) {
-      toggle.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', open);
-        toggle.textContent = open ? '×' : '☰';
-      });
-      nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded','false');
-        toggle.textContent = '☰';
-      }));
-    }
-
     document.getElementById('year').textContent = new Date().getFullYear();
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.main-nav');
-  if (toggle && nav && !toggle.dataset.bound) {
-    toggle.dataset.bound = 'true';
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-});
 // 15-09-2026 — use homepage gallery category as image source
 // The homepage gallery is the source of truth. When images are added/reordered
 // in the "kinderkamers" category, this page follows automatically.

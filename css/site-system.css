@@ -510,3 +510,24 @@ section{
     box-shadow:0 5px 16px rgba(17,24,39,.22);
   }
 }
+
+
+/* 16-09-2026 — roomier shared mobile navigation */
+@media(max-width:860px){
+  .main-nav{
+    gap:6px !important;
+    padding:20px 18px !important;
+  }
+  .main-nav > a:not(.btn){
+    padding:7px 10px !important;
+    line-height:1.45 !important;
+  }
+  .main-nav > a:not(.btn)::after{
+    bottom:2px !important;
+  }
+  .main-nav .nav-cta{
+    margin-top:5px !important;
+    padding-top:12px !important;
+    padding-bottom:12px !important;
+  }
+}
