@@ -321,8 +321,8 @@ section{
 }
 .footer-grid{
   display:grid !important;
-  grid-template-columns:1.35fr repeat(4,1fr) !important;
-  gap:38px !important;
+  grid-template-columns:1.35fr repeat(5,minmax(0,1fr)) !important;
+  gap:30px !important;
 }
 .footer-brand img{
   width:168px !important;
@@ -381,6 +381,15 @@ section{
   font-size:.75rem !important;
 }
 
+/* Footer: six columns on wide screens, three-column wrap before tablet. */
+@media(max-width:1080px) and (min-width:861px){
+  .footer-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:34px 42px !important;
+  }
+  .footer-brand{grid-column:1/-1 !important}
+}
+
 /* Responsive */
 @media(max-width:860px){
   :root{--section-space:76px}
@@ -416,4 +425,88 @@ section{
   .footer-grid{grid-template-columns:1fr !important}
   .footer-brand{grid-column:auto !important}
   .footer-bottom{flex-direction:column !important}
+}
+
+
+/* =========================================================
+   Shared footer: socials + city row
+   ========================================================= */
+.site-footer .socials{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:18px;
+}
+.site-footer .socials a{
+  width:34px;
+  height:34px;
+  border:1px solid #3a3a3a;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  color:#d7d7d7 !important;
+  transition:border-color .18s ease,color .18s ease,background .18s ease,transform .18s ease;
+}
+.site-footer .socials a:hover{
+  border-color:var(--coral,#e25f63);
+  color:#fff !important;
+  background:rgba(255,255,255,.04);
+  transform:translateY(-1px);
+}
+.site-footer .socials svg{
+  width:16px;
+  height:16px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.site-footer .socials .social-fill{
+  fill:currentColor;
+  stroke:none;
+}
+
+.site-footer .footer-cities-col a,
+.site-footer .footer-cities-col span{
+  display:block;
+}
+.site-footer .footer-bottom{margin-top:42px}
+
+
+
+/* Mobile-only persistent WhatsApp contact button */
+.mobile-whatsapp-fab{
+  display:none;
+}
+@media(max-width:860px){
+  .mobile-whatsapp-fab{
+    position:fixed;
+    right:calc(16px + env(safe-area-inset-right, 0px));
+    bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index:9999;
+    display:grid;
+    place-items:center;
+    width:58px;
+    height:58px;
+    padding:0;
+    border:0;
+    border-radius:50%;
+    color:#fff;
+    background:#25D366;
+    box-shadow:0 8px 24px rgba(17,24,39,.24), 0 2px 7px rgba(17,24,39,.18);
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:transform .16s ease, box-shadow .16s ease;
+  }
+  .mobile-whatsapp-fab svg{
+    display:block;
+    width:34px;
+    height:34px;
+  }
+  .mobile-whatsapp-fab:active{
+    transform:scale(.94);
+    box-shadow:0 5px 16px rgba(17,24,39,.22);
+  }
 }

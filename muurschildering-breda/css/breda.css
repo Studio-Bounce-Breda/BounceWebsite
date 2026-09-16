@@ -408,3 +408,226 @@ h3{font-size:1.3rem}
   .main-nav a{padding:10px !important}
   .nav-cta{margin-left:0 !important}
 }
+
+
+/* =========================================================
+   BREDA MOBILE PASS — 15-09-2026
+   Same approved mobile language as HOME / Kinderkamers / Brabant:
+   image-first hero, tighter rhythm, full-width landscape imagery.
+   ========================================================= */
+@media(max-width:860px){
+  .breda-page .local-intro,
+  .breda-page .local-projects,
+  .breda-page .nearby,
+  .breda-page .contact-banner{
+    padding-top:58px !important;
+    padding-bottom:58px !important;
+  }
+
+  .breda-page .local-intro-grid,
+  .breda-page .nearby-grid{
+    gap:34px !important;
+  }
+
+  .breda-page .section-head{
+    margin-bottom:26px !important;
+  }
+
+  .breda-page .local-intro-media img,
+  .breda-page .local-card img,
+  .breda-page .nearby .image-card img,
+  .breda-page .contact-collage img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    object-fit:cover !important;
+  }
+}
+
+@media(max-width:600px){
+  /* HERO — actual photo first, fading softly into the copy below. */
+  .breda-page .city-hero{
+    display:flex !important;
+    flex-direction:column !important;
+    padding:0 !important;
+    min-height:0 !important;
+    overflow:hidden !important;
+    background:var(--paper) !important;
+    color:var(--ink) !important;
+  }
+  .breda-page .city-hero::before{
+    display:none !important;
+  }
+  .breda-page .city-hero-bg{
+    position:relative !important;
+    inset:auto !important;
+    order:1 !important;
+    width:100% !important;
+    height:clamp(320px,92vw,430px) !important;
+    min-height:0 !important;
+    max-width:none !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    opacity:1 !important;
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 66%,rgba(0,0,0,.82) 77%,rgba(0,0,0,.32) 91%,transparent 100%) !important;
+    mask-image:linear-gradient(180deg,#000 0%,#000 66%,rgba(0,0,0,.82) 77%,rgba(0,0,0,.32) 91%,transparent 100%) !important;
+  }
+  .breda-page .city-hero-inner{
+    order:2 !important;
+    width:min(100% - 26px,var(--max)) !important;
+    min-height:0 !important;
+    margin:-26px auto 0 !important;
+    padding:0 0 44px !important;
+    display:block !important;
+  }
+  .breda-page .city-hero-copy{
+    max-width:none !important;
+    width:100% !important;
+  }
+  .breda-page .city-hero .breadcrumb{
+    color:var(--muted) !important;
+    margin-bottom:15px !important;
+  }
+  .breda-page .city-hero .breadcrumb a{
+    color:inherit !important;
+  }
+  .breda-page .city-hero .eyebrow{
+    color:var(--coral) !important;
+  }
+  .breda-page .city-hero h1{
+    font-size:clamp(2.45rem,11.4vw,3.45rem) !important;
+    line-height:.95 !important;
+    letter-spacing:-.045em !important;
+    max-width:none !important;
+    margin:0 0 18px !important;
+    color:var(--ink) !important;
+  }
+  .breda-page .city-hero h1 span{
+    display:inline !important;
+    width:auto !important;
+    max-width:none !important;
+    min-width:0 !important;
+    height:auto !important;
+    box-sizing:content-box !important;
+    translate:none !important;
+    color:var(--coral) !important;
+  }
+  .breda-page .city-hero-copy>p{
+    max-width:none !important;
+    font-size:1rem !important;
+    line-height:1.55 !important;
+    color:var(--muted) !important;
+  }
+  .breda-page .hero-actions{
+    margin-top:24px !important;
+    margin-bottom:20px !important;
+  }
+  .breda-page .hero-notes{
+    gap:9px 14px !important;
+    margin-top:20px !important;
+  }
+  .breda-page .city-hero .hero-note{
+    color:var(--muted) !important;
+  }
+  .breda-page .city-hero .hero-note::before{
+    background:var(--coral-soft) !important;
+    color:var(--coral) !important;
+  }
+
+  /* Compact vertical rhythm — no desktop-sized gaps on a phone. */
+  .breda-page .local-intro,
+  .breda-page .local-projects,
+  .breda-page .nearby,
+  .breda-page .contact-banner{
+    padding-top:48px !important;
+    padding-bottom:48px !important;
+  }
+  .breda-page .section-head{
+    margin-bottom:24px !important;
+  }
+  .breda-page .local-intro-copy h2,
+  .breda-page .section-head h2,
+  .breda-page .nearby-copy h2,
+  .breda-page .contact-copy h2{
+    font-size:clamp(2rem,9.7vw,2.85rem) !important;
+    line-height:.98 !important;
+    max-width:none !important;
+    width:auto !important;
+    translate:none !important;
+  }
+
+  /* Intro: copy + one substantial landscape image. */
+  .breda-page .local-intro-grid{
+    grid-template-columns:1fr !important;
+    gap:26px !important;
+  }
+  .breda-page .local-intro-media{
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:1.45 !important;
+    border-radius:18px !important;
+  }
+
+  /* Examples: exactly the approved large landscape stack. */
+  .breda-page .local-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+  .breda-page .local-card{
+    width:100% !important;
+    min-height:0 !important;
+    aspect-ratio:1.48 !important;
+    border-radius:15px !important;
+  }
+  .breda-page .local-card span{
+    left:10px !important;
+    bottom:10px !important;
+    padding:7px 10px !important;
+    font-size:.68rem !important;
+  }
+  .breda-page .local-more-work{
+    margin-top:20px !important;
+  }
+
+  /* Breda & omgeving: compact text, then one wide image. */
+  .breda-page .nearby-grid{
+    grid-template-columns:1fr !important;
+    gap:24px !important;
+  }
+  .breda-page .place-pills{
+    gap:7px !important;
+    margin-top:18px !important;
+  }
+  .breda-page .place-pill{
+    padding:9px 11px !important;
+    font-size:.77rem !important;
+  }
+  .breda-page .region-link{
+    margin-top:17px !important;
+  }
+  .breda-page .nearby .image-card{
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:1.45 !important;
+    border-radius:18px !important;
+  }
+
+  /* Final CTA: same compact one-column treatment as the other pages. */
+  .breda-page .contact-banner{
+    padding-bottom:48px !important;
+  }
+  .breda-page .contact-card{
+    grid-template-columns:1fr !important;
+    border-radius:18px !important;
+  }
+  .breda-page .contact-copy{
+    padding:28px 22px !important;
+  }
+  .breda-page .contact-collage{
+    min-height:0 !important;
+    height:auto !important;
+    aspect-ratio:1.48 !important;
+    padding:4px !important;
+    gap:4px !important;
+  }
+}

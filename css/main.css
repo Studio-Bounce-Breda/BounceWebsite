@@ -418,7 +418,7 @@ section{scroll-margin-top:90px}
 
 /* Footer */
 .site-footer{background:#111;color:#fff;padding:58px 0 24px}
-.footer-grid{display:grid;grid-template-columns:1.35fr repeat(4,1fr);gap:38px}
+.footer-grid{display:grid;grid-template-columns:1.35fr repeat(5,minmax(0,1fr));gap:30px}
 .footer-brand img{width:168px;margin-bottom:18px}
 .footer-brand p{color:#aaa;max-width:270px;font-size:.83rem}
 .footer-col h3{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;margin:2px 0 15px;color:#eee}
