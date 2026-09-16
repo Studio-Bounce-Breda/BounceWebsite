@@ -1,7 +1,7 @@
 // Shared site settings managed by SiteEdit.
 // WhatsApp number: international format, digits only.
 window.SITEEDIT_SITE_CONFIG = {
-  whatsappNumber: '31630480901'
+  whatsappNumber: '31657114682'
 };
 
 (function () {
