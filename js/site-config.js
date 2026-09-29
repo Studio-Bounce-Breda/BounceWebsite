@@ -6,7 +6,7 @@ window.SITEEDIT_SITE_CONFIG = {
 
 (function () {
   function cleanNumber(value) {
-    return String(value || '').replace(/D/g, '');
+    return String(value || '').replace(/\D/g, '');
   }
 
   function messageFromHref(href) {

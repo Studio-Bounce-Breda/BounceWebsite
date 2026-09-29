@@ -1,13 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
-  const WHATSAPP_URL = 'https://wa.me/31600000000'; // TODO: vervang door echte nummer
-
-  /* WhatsApp */
-  document.querySelectorAll('.whatsapp-link').forEach(link => {
-    link.href = WHATSAPP_URL;
-    link.target = '_blank';
-    link.rel = 'noopener';
-  });
+  // WhatsApp links are configured centrally in js/site-config.js.
 
   /* Portfolio filter + compact tablet/mobile gallery */
   const filters = Array.from(document.querySelectorAll('.filter'));
@@ -23,25 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
     return (card.dataset.cat || '').split(/\s+/).includes(filter);
   }
 
-  function orderedPortfolioCards(filter) {
-    const matching = cards.filter(card => cardMatchesFilter(card, filter));
-    if (filter !== 'all') return matching;
+  // Keep every gallery in alphabetical category order, including when SiteEdit
+  // inserts new images. Within a category sort naturally by image filename.
+  const gallery = document.querySelector('.gallery');
+  const categoryNames = new Map(filters
+    .filter(button => button.dataset.filter && button.dataset.filter !== 'all')
+    .map(button => [button.dataset.filter, button.textContent.trim()]));
+  const alphabetical = new Intl.Collator('nl', { numeric: true, sensitivity: 'base' });
+  function categoryName(card) {
+    const key = (card.dataset.cat || '').trim().split(/\s+/)[0];
+    return categoryNames.get(key) || card.querySelector('span')?.textContent.trim() || key;
+  }
+  function imageName(card) {
+    const src = card.querySelector('img')?.getAttribute('src') || '';
+    return decodeURIComponent(src.split('/').pop().split('?')[0]);
+  }
+  cards.sort((a, b) =>
+    alphabetical.compare(categoryName(a), categoryName(b)) ||
+    alphabetical.compare(imageName(a), imageName(b))
+  );
+  // Real DOM order matters: CSS grid and keyboard/lightbox navigation follow it.
+  if (gallery) cards.forEach(card => gallery.appendChild(card));
 
-    // "Alle" starts with one representative image from each current category.
-    // Because this reads the filter buttons dynamically, new SiteEdit categories
-    // automatically participate without hard-coding category names here.
-    const categoryKeys = filters
-      .map(button => button.dataset.filter)
-      .filter(key => key && key !== 'all');
-    const representatives = [];
-    categoryKeys.forEach(key => {
-      const card = matching.find(item => cardMatchesFilter(item, key));
-      if (card && !representatives.includes(card)) representatives.push(card);
-    });
-    matching.forEach(card => {
-      if (!representatives.includes(card)) representatives.push(card);
-    });
-    return representatives;
+  function orderedPortfolioCards(filter) {
+    return cards.filter(card => cardMatchesFilter(card, filter));
   }
 
   function applyPortfolioView({ reset = false } = {}) {
@@ -72,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   galleryLoadMore?.addEventListener('click', () => {
-    galleryVisibleCount += GALLERY_BATCH;
+    // One click reveals ALL remaining images, without a second batch limit.
+    galleryVisibleCount = orderedPortfolioCards(activeFilter).length;
     applyPortfolioView();
   });
 

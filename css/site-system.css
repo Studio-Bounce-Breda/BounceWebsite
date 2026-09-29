@@ -476,40 +476,29 @@ section{
 
 
 
-/* Mobile-only persistent WhatsApp contact button */
+/* Persistent WhatsApp contact button on desktop, tablet and mobile. */
 .mobile-whatsapp-fab{
-  display:none;
+  position:fixed;
+  right:calc(16px + env(safe-area-inset-right, 0px));
+  bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index:9999;
+  display:grid;
+  place-items:center;
+  width:58px;
+  height:58px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  color:#fff;
+  background:#25D366;
+  box-shadow:0 8px 24px rgba(17,24,39,.24), 0 2px 7px rgba(17,24,39,.18);
+  text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .16s ease, box-shadow .16s ease;
 }
-@media(max-width:860px){
-  .mobile-whatsapp-fab{
-    position:fixed;
-    right:calc(16px + env(safe-area-inset-right, 0px));
-    bottom:calc(16px + env(safe-area-inset-bottom, 0px));
-    z-index:9999;
-    display:grid;
-    place-items:center;
-    width:58px;
-    height:58px;
-    padding:0;
-    border:0;
-    border-radius:50%;
-    color:#fff;
-    background:#25D366;
-    box-shadow:0 8px 24px rgba(17,24,39,.24), 0 2px 7px rgba(17,24,39,.18);
-    text-decoration:none;
-    -webkit-tap-highlight-color:transparent;
-    transition:transform .16s ease, box-shadow .16s ease;
-  }
-  .mobile-whatsapp-fab svg{
-    display:block;
-    width:34px;
-    height:34px;
-  }
-  .mobile-whatsapp-fab:active{
-    transform:scale(.94);
-    box-shadow:0 5px 16px rgba(17,24,39,.22);
-  }
-}
+.mobile-whatsapp-fab svg{display:block;width:58px;height:58px;}
+.mobile-whatsapp-fab:active{transform:scale(.94);box-shadow:0 5px 16px rgba(17,24,39,.22);}
+@media(hover:hover){.mobile-whatsapp-fab:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(17,24,39,.27);}}
 
 
 /* 16-09-2026 — roomier shared mobile navigation */
